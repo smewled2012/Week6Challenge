@@ -14,13 +14,12 @@ public class ATM {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @NotNull
+
     private String accountNum;
 
     @NotNull
     private  double amount;
 
-    @NotNull
     private String reason;
 
     public ATM() {
