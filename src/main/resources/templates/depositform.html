@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Deposit Form </title>
+</head>
+<body>
+
+<h3>  Deposit Page </h3>
+
+<form th:action="@{/deposit}" th:object="${atm}" method="post">
+
+    Amount<br />
+    <input type="number" th:field="*{amount}" > <br />
+
+    <input type="submit" value="Deposit" >
+
+</form>
+
+</body>
+</html>

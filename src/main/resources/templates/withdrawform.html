@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Withdraw</title>
+</head>
+<body>
+<h2> Withdring page </h2>
+<a href="/" > Show all Transaction </a>
+
+<form th:action="@{/makewithdraw}" th:object="${atm}" method="post">
+
+
+    WithDraw Amount <br />
+
+    <input type ="number" th:field="*{amount}"> <br />
+    <!--Checking for a numeric value -->
+    <!--<p th:text="${amount>500}?'The Amount to withdraw is greater than 500':'The  Amount to withdraw  is less than 500'"></p>-->
+    <br />
+
+    <input type="submit" value="Withdraw">
+
+</form>
+
+</body>
+</html>

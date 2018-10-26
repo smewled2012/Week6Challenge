@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Transaction Detail </title>
+</head>
+<body>
+
+ <h2> Welcome to springBoot Bank </h2>
+
+<table>
+    <tr>
+        <th> AccountNumber </th>
+        <th> Amount </th>
+        <th>  Reason </th>
+        <td>   Action </td>
+    </tr>
+
+    <tr th:each="atm : ${atms}">
+        <td th:text="${atm.accountNum}"> </td>
+        <td th:text="${atm.amount}"> </td>
+        <td th:text="${atm.reason}"> </td>
+        <td>
+            <a th:href="@{/adddeposit/{id}(id=${atm.id})}"> Deposit </a>
+            <a th:href="@{/makewithdraw/{id}(id=${atm.id})}">  Withdraw </a>
+        </td>
+
+    </tr>
+
+
+</table>
+
+</body>
+</html>
