@@ -15,20 +15,30 @@ public class ATM {
     private long id;
 
 
+    @NotNull
+
     private String accountNum;
 
     @NotNull
     private  double amount;
 
+
+    private String action;
+
+    @NotNull
+    private double balance;
+
+    @NotNull
     private String reason;
 
     public ATM() {
     }
 
-    public ATM(String accountNum, double amount, String reason) {
+    public ATM(String accountNum, double amount, String reason, double balance) {
         this.accountNum = accountNum;
         this.amount = amount;
         this.reason = reason;
+        this.balance=balance;
     }
 
     public long getId() {
@@ -37,6 +47,22 @@ public class ATM {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 
     public String getAccountNum() {

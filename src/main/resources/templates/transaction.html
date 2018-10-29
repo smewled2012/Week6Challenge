@@ -8,22 +8,25 @@
 
  <h2> Welcome to springBoot Bank </h2>
 
+ <a href ="/deposit/"> Deposit </a>
+ <a href="/withdraw"> Withdraw </a>
+ <a href ="/"> Show Balance </a>
+
 <table>
     <tr>
         <th> AccountNumber </th>
-        <th> Amount </th>
         <th>  Reason </th>
-        <td>   Action </td>
+        <th>   Action </th>
+        <th> Amount </th>
+        <th> Balance </th>
     </tr>
 
     <tr th:each="atm : ${atms}">
         <td th:text="${atm.accountNum}"> </td>
+        <td th:text="${atm.reason}"></td>
+        <td th:text="${atm.action}"> </td>
         <td th:text="${atm.amount}"> </td>
-        <td th:text="${atm.reason}"> </td>
-        <td>
-            <a th:href="@{/adddeposit/{id}(id=${atm.id})}"> Deposit </a>
-            <a th:href="@{/makewithdraw/{id}(id=${atm.id})}">  Withdraw </a>
-        </td>
+        <td th:text="${atm.balance}"> </td>
 
     </tr>
 

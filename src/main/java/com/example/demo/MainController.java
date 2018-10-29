@@ -45,16 +45,12 @@ public class MainController {
     }
 */
     // add deposit to specific account
-    @GetMapping("/adddeposit/{id}")
-    public String addDeposit(@PathVariable("id") long id, ATM atm,  Model model){
-
-
-     model.addAttribute("atm", atmRepository.findById(id));
+    @GetMapping("/deposit/")
+    public String addDeposit(ATM atm,  Model model){
+        model.addAttribute("atm",new ATM());
 
         return "depositform";
     }
-
-
 
 
     // save the deposit
@@ -62,38 +58,34 @@ public class MainController {
     public String saveDeposit(@Valid ATM atm,  Model model){
 
        // atm.setAmount(amount);
-       model.addAttribute("atm",atmRepository.save(atm));
+       atm.setAction("deposit");
+       atm.setAmount(atm.getAmount());
+       atm.setBalance(atm.getBalance()+atm.getAmount());
+       atmRepository.save(atm);
         return "redirect:/";
     }
 
     // withdraw
-    @GetMapping("/makewithdraw/{id}")
-    public String withdraw(@PathVariable ("id") long id, Model model){
-        model.addAttribute("atm",atmRepository.findById(id));
+    @GetMapping("/withdraw")
+    public String withdraw(ATM atm, Model model){
+
+        model.addAttribute("atm",new ATM());
+
         return "Withdrawform";
 
     }
     @PostMapping("/makewithdraw")
-    public String makeWithdraw(@Valid ATM atm, BindingResult result){
+    public String makeWithdraw(@Valid ATM atm, Model model){
 
-        if(result.hasErrors()){
-            return "withdrawform";
-        }
-
+        // atm.setAmount(amount);
+        atm.setAction("Withdraw");
+        atm.setAmount(atm.getAmount());
+        atm.setBalance(atm.getBalance()- atm.getAmount());
         atmRepository.save(atm);
         return "redirect:/";
     }
 
-   /* // to see the detail of each car with id
-    @GetMapping("/withdraw/{id}")
-    public String makeWithdraw(@PathVariable("id") long id,  Model model){
 
-
-
-        model.addAttribute("atm", atmRepository);
-        return "show";
-    }
-*/
 
 
 

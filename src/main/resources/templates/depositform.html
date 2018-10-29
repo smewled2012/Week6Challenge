@@ -9,10 +9,19 @@
 <h3>  Deposit Page </h3>
 
 <form th:action="@{/deposit}" th:object="${atm}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <input type="hidden" th:field="*{action}">
 
+
+    Account Number<br />
+    <input type="text" th:field="*{accountNum}" />
+    <br />
+    Reason <br />
+    <textarea rows="2" th:field="*{reason}"></textarea>
+    <br />
     Amount<br />
-    <input type="number" th:field="*{amount}" > <br />
-
+    <input type="number" th:field="*{amount}" >
+    <br />
     <input type="submit" value="Deposit" >
 
 </form>
